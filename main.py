@@ -95,7 +95,7 @@ print("***********************")
 
 
 ## Load image stack as dataset 
-
+print(path_train_dataset)
 filenames_train = glob.glob(os.path.join(path_train_dataset, "*.TIFF"))
 filenames_val = glob.glob(os.path.join(path_val_dataset, "*.TIFF"))
 print("On following file will be trained:  ", filenames_train[0])
