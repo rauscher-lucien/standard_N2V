@@ -22,11 +22,11 @@ from transformations import PercentileNormalize3D, PercentileDenormalize3D, ZCro
 from dataset import InferenceDataset3D
 from network import Noise2NoiseUNet3D
 
-
+project_name = 'test-1'
 # my_folder = os.path.join('/g', 'prevedel', 'members', 'Rauscher')
 my_folder = os.path.join('Z:', 'members', 'Rauscher')
-project_dir = os.path.join(my_folder, 'projects', 'N2V-OCT-4')
-path_results = os.path.join(project_dir, 'results_8_fmaps_5_layers')
+project_dir = os.path.join(my_folder, 'projects', 'standard_N2V')
+path_results = os.path.join(project_dir, project_name, 'results-1')
 
 path_dataset =  os.path.join(my_folder, 'data', 'OCT-data-3')
 #********************************************************#
