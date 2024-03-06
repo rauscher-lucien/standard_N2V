@@ -161,7 +161,7 @@ epoch = 300
 batch_size = 4
 
 # Logger frequencies
-display_freq = 1
+display_freq = 50
 model_storing_freq = 50
 #*********************************#
 
