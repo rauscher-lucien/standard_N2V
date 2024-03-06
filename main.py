@@ -95,7 +95,7 @@ else:
     print(f"Default project name: {project_name}")
 
 
-path_results = os.path.join(project_dir, 'results-1')
+path_results = os.path.join(project_dir, project_name, 'results-1')
 path_train_dataset = os.path.join(data_dir, 'train')
 path_val_dataset = os.path.join(data_dir, 'validation')
 
