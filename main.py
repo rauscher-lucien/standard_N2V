@@ -174,7 +174,7 @@ parameter_dict['dir_checkpoint'] = checkpoint_folder
 parameter_dict['dir_log'] = log_folder
 parameter_dict['dir_result'] = res_folder
 # training state
-parameter_dict['train_continue'] = 'off'
+parameter_dict['train_continue'] = train_continue
 # hyperparameters
 parameter_dict['num_epoch'] = epoch
 # batch size
