@@ -3,6 +3,7 @@
 ## Add the modules to the system path
 import os
 import sys
+import argparse
 sys.path.append(os.path.join(".."))
 
 import logging
@@ -53,17 +54,50 @@ import utils
 from train import Trainer
 
 
-# Enter the store path for the results and raw file here #
-# my_folder = os.path.join('/g', 'prevedel', 'members', 'Rauscher')
-my_folder = os.path.join('Z:', 'members', 'Rauscher')
-project_dir = os.path.join(my_folder, 'projects', 'N2V-OCT-4')
-path_results = os.path.join(project_dir, 'results_8_fmaps_5_layers')
 
-path_dataset =  os.path.join(my_folder, 'data', 'OCT-data-3')
-path_train_dataset = os.path.join(path_dataset, 'train')
-path_val_dataset = os.path.join(path_dataset, 'validation')
-#********************************************************#
+## parser
 
+# Check if the script is running on the server by looking for the environment variable
+if os.getenv('RUNNING_ON_SERVER') == 'true':
+    # Set up argument parsing
+    parser = argparse.ArgumentParser(description='Process data directory.')
+    parser.add_argument('--data_dir', type=str, help='Path to the data directory')
+    parser.add_argument('--project_name', type=str, help='Name of the project')
+    parser.add_argument('--train_continue', type=str, default='off', choices=['on', 'off'],
+                        help='Flag to continue training: "on" or "off" (default: "off")')
+    parser.add_argument('--load_epoch', type=int, default=1, 
+                        help='Epoch number from which to continue training (default: 1)')
+
+
+    # Parse arguments
+    args = parser.parse_args()
+
+    # Now you can use args.data_dir as the path to your data
+    data_dir = args.data_dir
+    project_name = args.project_name 
+    train_continue = args.train_continue
+    load_epoch = args.load_epoch
+    project_dir = os.path.join('/g', 'prevedel', 'members', 'Rauscher', 'projects', 'standard_N2V')
+
+    print(f"Using data directory: {data_dir}")
+    print(f"Project name: {project_name}")
+    print(f"Train continue: {train_continue}")
+    print(f"Load epoch: {load_epoch}")
+else:
+
+    data_dir = os.path.join('Z:\\', 'members', 'Rauscher', 'data', 'OCT-data-3')
+    project_name = 'test-1'
+    train_continue = 'off'
+    load_epoch = 1
+    project_dir = os.path.join('Z:\\', 'members', 'Rauscher', 'projects', 'standard_N2V')
+    
+    print(f"Not running on server, using default data directory: {data_dir}")
+    print(f"Default project name: {project_name}")
+
+
+path_results = os.path.join(project_dir, 'results-1')
+path_train_dataset = os.path.join(data_dir, 'train')
+path_val_dataset = os.path.join(data_dir, 'validation')
 
 # Create all the other paths based on the results folder
 
